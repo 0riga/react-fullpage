@@ -75,14 +75,14 @@ const useSwipe = (
 
     const element = ref.current;
 
-    element?.addEventListener('touchstart', handleTouchStart);
-    element?.addEventListener('touchmove', handleTouchMove);
-    element?.addEventListener('touchend', handleTouchEnd);
+    element?.addEventListener('touchstart', handleTouchStart, { passive: true});
+    element?.addEventListener('touchmove', handleTouchMove, { passive: true});
+    element?.addEventListener('touchend', handleTouchEnd, { passive: true});
 
     return () => {
-      element?.removeEventListener('touchstart', handleTouchStart);
-      element?.removeEventListener('touchmove', handleTouchMove);
-      element?.removeEventListener('touchend', handleTouchEnd);
+      element?.removeEventListener('touchstart', handleTouchStart, { passive: true});
+      element?.removeEventListener('touchmove', handleTouchMove, { passive: true});
+      element?.removeEventListener('touchend', handleTouchEnd, { passive: true});
     };
   }, [ref, onSwipeStart, onSwipeEnd]);
 };
